@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  :root {
+    --primary: #6a8fcc;
+    --primary-hover: #5a7fc5;
+    --text: #e0e0e0;
+    --background: #1e1e1e;
+    --border: #444;
+    --toggle-on: #6a8fcc;
+    --toggle-off: #555;
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    padding: 16px;
+    color: var(--text);
+    background-color: var(--background);
+  }
+
+  .toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 0;
+  }
+
+  .toggle label {
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    color: var(--text);
+  }
+
+  /* Grey out the label if the checkbox is disabled */
+  .toggle input[type="checkbox"]:disabled + label {
+    color: #666;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+
+  .toggle input[type="checkbox"] {
+    position: relative;
+    width: 44px;
+    height: 22px;
+    appearance: none;
+    background: var(--toggle-off);
+    border-radius: 11px;
+    cursor: pointer;
+    transition: background 0.2s;
+    border: 1px solid var(--border);
+  }
+
+  .toggle input[type="checkbox"]:checked {
+    background: var(--toggle-on);
+  }
+
+  .toggle input[type="checkbox"]::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.2s;
+  }
+
+  .toggle input[type="checkbox"]:checked::after {
+    transform: translateX(20px);
+  }
+
+  /* Smaller toggle and label for Hide Downvotes */
+  .hide-downvotes-container .toggle input[type="checkbox"] {
+    width: 36px !important;
+    height: 18px !important;
+  }
+
+  .hide-downvotes-container .toggle input[type="checkbox"]::after {
+    width: 14px !important;
+    height: 14px !important;
+    top: 2px !important;
+    left: 2px !important;
+  }
+
+  .hide-downvotes-container .toggle label {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+  }
+  
+  .hide-downvotes-container .toggle {
+    margin-top: -6px !important;
+	padding-right: 4px !important;
+  }
+</style>
+</head>
+<body>
+  <div class="toggle">
+    <label for="hide-votes">Hide Reddit vote count&nbsp;</label>
+    <input type="checkbox" id="hide-votes">
+  </div>
+  <div class="hide-downvotes-container">
+	<div class="toggle">
+		<label for="hide-downvotes">&nbsp;&nbsp;&#x21b3;&nbsp;Positivity Mode&trade;&nbsp;</label>
+		<input type="checkbox" id="hide-downvotes">
+	</div>
+  </div>
+  <div class="toggle">
+    <label for="hide-ads">Hide Reddit ads&nbsp;</label>
+    <input type="checkbox" id="hide-ads">
+  </div>
+  <script src="config.js"></script>
+</body>
+</html>
