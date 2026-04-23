@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Hide Reddit Votes",
   "version": "2.0",
-  "description": "Hide Reddit votes (leaving only the upvote button), and optionally hide ads",
+  "description": "Hide Reddit vote count, downvote button, and ads (configurable)",
   "permissions": ["storage"],
   "browser_specific_settings": {
     "gecko": {
