@@ -1,6 +1,34 @@
 {
   "manifest_version": 2,
   "name": "Hide Reddit Votes",
+  "version": "2.0",
+  "description": "Hide Reddit votes (leaving only the upvote button), and optionally hide ads",
+  "permissions": ["storage"],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "@hide-reddit-votes",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
+    }
+  },
+  "options_ui": {
+    "page": "popup.html",
+    "open_in_tab": false
+  },
+  "browser_action": {
+    "default_icon": "icons/icon.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.reddit.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}{
+  "manifest_version": 2,
+  "name": "Hide Reddit Votes",
   "version": "1.2",
   "description": "Hides the Reddit downvote button, and the scores, leaving only the upvote button",
   "browser_specific_settings": {
