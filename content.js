@@ -1,13 +1,15 @@
-function hideVotes() {
+function hideVotes(hideDownvotes) {
   // Find all host elements that might contain the shadow DOM
   document.querySelectorAll('*').forEach(host => {
     if (host.shadowRoot) {
       // Look for 'shreddit-vote-animations' within each shadow DOM
       const container = host.shadowRoot.querySelector('shreddit-vote-animations');
       if (container) {
-        // Hide downvote button
-		const downvoteButton = container.querySelector('button[downvote]');
-		if (downvoteButton) downvoteButton.remove();
+		// Hide downvote button (if chosen)
+		if (hideDownvotes) {
+		  const downvoteButton = container.querySelector('button[downvote]');
+		  if (downvoteButton) downvoteButton.remove();
+		}
         // Hide vote number
 		const voteNumber = container.querySelector('faceplate-number');
 		if (voteNumber) voteNumber.style.display = 'none';
@@ -34,10 +36,11 @@ function hideAds() {
 
 browser.storage.local.get({
   hideVotes: true, // Default is on
+  hideDownvotes: false, // Default is off
   hideAds: false    // Default is off
 }).then((data) => {
   if (data.hideVotes) {
-    const observerVotes = new MutationObserver(() => hideVotes());
+    const observerVotes = new MutationObserver(() => hideVotes(data.hideDownvotes));
     observerVotes.observe(document.body, { childList: true, subtree: true });
   }
   if (data.hideAds) {
