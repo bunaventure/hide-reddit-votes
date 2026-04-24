@@ -1,13 +1,16 @@
-# Hide Reddit Votes - Upvote Only
+# Hide Reddit Votes — w/ Positivity Mode™ & Ad Block
 https://addons.mozilla.org/firefox/addon/hide-reddit-votes/
 
-Hides the Reddit downvote button, and the scores, leaving only the upvote button.
+Hide Reddit vote count, downvote button, and ads (configurable).
 <hr>
-Positivity-mode I call it. Decide for yourself if a post/comment is good or not - if it is, upvote, if not, move on!
+Decide for yourself if a post/comment is good or not - if it is, upvote, if not, move on!
 
-This add-on has no configurable options. I made this for myself, and anyone else that wants to browse Reddit for the content, without being subjected to the hellscape of negativity that can arise.
+Hide the Reddit vote count on comments and posts, with the option to hide the downvote button: Positivity Mode™* (disabled by default). Also has the option to hide ads (disabled by default).
 
-Feed:
-<img width="325" height="407" alt="Screenshot" src="https://github.com/user-attachments/assets/b713802c-bc7a-4ec3-9b7e-f19c67172e11" />
-Comments:
-<img width="325" height="407" alt="Screenshot2" src="https://github.com/user-attachments/assets/ceb27829-7343-4edf-8ba5-ab35f3b66795" />
+I made this for myself, and anyone else that wants to browse Reddit for the content, without being subject to the potential hellscape of negativity and ads.
+
+<i>*Positivity Mode™ is not trademarked and I do not know how to register a trademark</i>
+<hr>
+<img width="1000" height="800" alt="DefaultScreenshot" src="https://github.com/user-attachments/assets/11d41a90-02fe-43db-a479-ffdc445d7a4d" />
+<hr>
+<img width="1000" height="800" alt="PositiveScreenshot" src="https://github.com/user-attachments/assets/661b08de-3fe6-48d0-a856-bafb00236180" />

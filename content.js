@@ -1,30 +1,50 @@
-function hideVotes() {
+function hideVotes(hideDownvotes) {
   // Find all host elements that might contain the shadow DOM
   document.querySelectorAll('*').forEach(host => {
     if (host.shadowRoot) {
       // Look for 'shreddit-vote-animations' within each shadow DOM
       const container = host.shadowRoot.querySelector('shreddit-vote-animations');
       if (container) {
-        // Hide downvote buttons within the container
-        container.querySelectorAll('button[downvote]').forEach(button => {
-          button.remove();
-        });
-        // Hide vote numbers within the container
-        container.querySelectorAll('faceplate-number').forEach(el => {
-          el.style.display = 'none';
-        });
-        // Remove "Vote" text nodes within the container
-        container.querySelectorAll('span[data-post-click-location="vote"]').forEach(span => {
-          Array.from(span.childNodes).forEach(node => {
-            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() === "Vote") {
-              node.remove();
-            }
-          });
-        });
+		// Hide downvote button (if chosen)
+		if (hideDownvotes) {
+		  const downvoteButton = container.querySelector('button[downvote]');
+		  if (downvoteButton) downvoteButton.remove();
+		}
+        // Hide vote number
+		const voteNumber = container.querySelector('faceplate-number');
+		if (voteNumber) voteNumber.style.display = 'none';
+        // Remove "Vote" text node
+		const voteTextSpan = container.querySelector('span[data-post-click-location="vote"]');
+		if (voteTextSpan) {
+		  for (const node of voteTextSpan.childNodes) {
+		    if (node.nodeType === Node.TEXT_NODE) {
+			  node.remove();
+			  break; // Stop after removing the first text node
+			}
+		  }
+		}
       }
     }
   });
 }
 
-const observerVotes = new MutationObserver(() => hideVotes());
-observerVotes.observe(document.body, { childList: true, subtree: true });
+function hideAds() {
+	// Hide promoted posts 
+	const adElements = document.querySelectorAll('shreddit-ad-post');
+	adElements.forEach(el => el.remove());
+}
+
+browser.storage.local.get({
+  hideVotes: true, // Default is on
+  hideDownvotes: false, // Default is off
+  hideAds: false    // Default is off
+}).then((data) => {
+  if (data.hideVotes) {
+    const observerVotes = new MutationObserver(() => hideVotes(data.hideDownvotes));
+    observerVotes.observe(document.body, { childList: true, subtree: true });
+  }
+  if (data.hideAds) {
+    const observerAds = new MutationObserver(() => hideAds());
+    observerAds.observe(document.body, { childList: true, subtree: true });
+  }
+});
