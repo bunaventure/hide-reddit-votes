@@ -12,6 +12,6 @@ I made this for myself, and anyone else that wants to browse Reddit for the cont
 <br><br>
 <i>*Positivity Mode™ is not trademarked and I do not know how to register a trademark</i>
 <hr>
-<img width="792" height="726" alt="1" src="https://github.com/user-attachments/assets/2c860936-22bc-4c87-b12e-6d378fe779a2" />
+<img width="792" height="726" alt="1" src="https://github.com/user-attachments/assets/8447d1d0-f1d2-4790-9030-1a4e1f2f7938" />
 <hr>
-<img width="792" height="726" alt="2" src="https://github.com/user-attachments/assets/fd4ea58d-f4b1-4f3c-8e63-8ca9f88b5df1" />
+<img width="792" height="726" alt="2" src="https://github.com/user-attachments/assets/5fa2c1ff-26de-4f9b-aebf-33044d051611" />
