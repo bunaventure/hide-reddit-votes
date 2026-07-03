@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
   :root {
     --primary: #6a8fcc;
@@ -12,38 +13,49 @@
     --toggle-off: #555;
   }
 
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    padding: 16px;
+    padding: clamp(20px, 8vw, 32px);
     color: var(--text);
     background-color: var(--background);
+    min-height: 100vh;
+    margin: 0;
+    font-size: clamp(16px, 4vw, 18px);
   }
 
   .toggle {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 12px 0;
+    margin: clamp(12px, 4vw, 20px) 0;
+    width: 100%;
   }
 
   .toggle label {
-    font-size: 14px;
+    font-size: clamp(14px, 4vw, 18px);
     font-weight: 500;
     cursor: pointer;
     user-select: none;
     color: var(--text);
+    flex: 1;
+    margin-right: 12px;
   }
 
   .toggle input[type="checkbox"] {
     position: relative;
-    width: 44px;
-    height: 22px;
+    width: clamp(44px, 11vw, 56px);
+    height: clamp(22px, 5.5vw, 28px);
     appearance: none;
     background: var(--toggle-off);
-    border-radius: 11px;
+    border-radius: clamp(11px, 2.75vw, 14px);
     cursor: pointer;
     transition: background 0.2s;
     border: 1px solid var(--border);
+    flex-shrink: 0;
   }
 
   .toggle input[type="checkbox"]:checked {
@@ -53,44 +65,54 @@
   .toggle input[type="checkbox"]::after {
     content: '';
     position: absolute;
-    top: 1px;
+    top: 50%;
     left: 2px;
-    width: 18px;
-    height: 18px;
+    width: calc(clamp(22px, 5.5vw, 28px) - 4px);
+    height: calc(clamp(22px, 5.5vw, 28px) - 4px);
     background: white;
     border-radius: 50%;
     transition: transform 0.2s;
+    transform: translateY(-50%);
   }
 
   .toggle input[type="checkbox"]:checked::after {
-    transform: translateX(20px);
+    transform: translateY(-50%) translateX(calc(clamp(22px, 5.5vw, 28px)));
   }
 
   /* Smaller toggle and label for Hide Downvotes */
   .hide-downvotes-container .toggle input[type="checkbox"] {
-    width: 34px !important;
-    height: 17px !important;
+    width: clamp(34px, 8.5vw, 42px) !important;
+    height: clamp(17px, 4.25vw, 21px) !important;
   }
 
   .hide-downvotes-container .toggle input[type="checkbox"]::after {
-    width: 13px !important;
-    height: 13px !important;
-    top: 1px !important;
-    left: 0px !important;
+    width: calc(clamp(17px, 4.25vw, 21px) - 4px) !important;
+    height: calc(clamp(17px, 4.25vw, 21px) - 4px) !important;
+    left: 1px !important;
+  }
+
+  .hide-downvotes-container .toggle input[type="checkbox"]:checked::after {
+    transform: translateY(-50%) translateX(calc(clamp(17px, 4.25vw, 21px) + 1px)) !important;
   }
 
   .hide-downvotes-container .toggle label {
-    font-size: 12px !important;
+    font-size: clamp(11px, 3vw, 14px) !important;
     font-weight: 400 !important;
   }
   
   .hide-downvotes-container .toggle {
-    margin-top: -8px !important;
-	padding-right: 4px !important;
+    margin-top: clamp(-4px, -1vw, 0px) !important;
+	padding-right: 0px !important;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
   }
 </style>
 </head>
 <body>
+<div class="container">
   <div class="toggle">
     <label for="hide-votes">Hide Reddit vote count&nbsp;</label>
     <input type="checkbox" id="hide-votes">
@@ -102,7 +124,7 @@
 	</div>
   </div>
   <div class="toggle">
-    <label for="hide-comments">Hide comments button&nbsp;</label>
+    <label for="hide-comments">Hide comment count&nbsp;</label>
     <input type="checkbox" id="hide-comments">
   </div>
   <div class="toggle">
@@ -110,9 +132,10 @@
     <input type="checkbox" id="hide-awards">
   </div>
   <div class="toggle">
-    <label for="hide-ads">Hide Reddit ads&nbsp;</label>
+    <label for="hide-ads">Hide ads&nbsp;</label>
     <input type="checkbox" id="hide-ads">
   </div>
   <script src="config.js"></script>
+</div>
 </body>
 </html>

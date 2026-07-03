@@ -31,7 +31,9 @@ function hideVotes(hideVotes, hideDownvotes, hideComments, hideAwards) {
         // Hide award button (if chosen)
         if (hideAwards) {
             const awardButton = host.shadowRoot.querySelector('award-button');
+            const awardButtonComments = document.querySelector('award-button');
             if (awardButton) awardButton.remove();
+            if (awardButtonComments) awardButtonComments.remove();
         }
     }
     });
