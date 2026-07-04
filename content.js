@@ -42,7 +42,7 @@ function hideVotes(hideVotes, hideDownvotes, hideComments, hideAwards) {
 
 function hideAds() {
     // Hide ads / promoted posts
-	const adElements = document.querySelectorAll('shreddit-ad-post, shreddit-comment-tree-ad');
+	const adElements = document.querySelectorAll('shreddit-ad-post, shreddit-comment-tree-ad, shreddit-comments-page-ad');
 	adElements.forEach(el => el.remove());
 }
 
