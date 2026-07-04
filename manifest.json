@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Hide Reddit Votes",
-  "version": "3.1",
+  "version": "3.2",
   "description": "Hide Reddit vote count, downvote button, awards, comments, and ads (configurable)",
   "permissions": ["storage"],
   "browser_specific_settings": {

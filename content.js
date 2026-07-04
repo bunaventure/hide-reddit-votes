@@ -51,8 +51,11 @@ browser.storage.local.get({
     hideDownvotes: false, // Default is off
     hideComments: false, // Default is off
     hideAwards: false, // Default is off
-    hideAds: false    // Default is off
+    hideAds: false,    // Default is off
+    masterToggle: true  // Default is on
 }).then((data) => {
+    if (!data.masterToggle) return;
+
     const observerVotes = new MutationObserver(() => hideVotes(data.hideVotes, data.hideDownvotes, data.hideComments, data.hideAwards));
     observerVotes.observe(document.body, { childList: true, subtree: true });
     if (data.hideAds) {
