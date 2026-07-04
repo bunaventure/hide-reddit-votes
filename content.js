@@ -12,7 +12,7 @@ function hideVotes(hideVotes, hideDownvotes, hideComments, hideAwards) {
             }
             const voteNumber = container.querySelector('faceplate-number');
             if (voteNumber) voteNumber.style.display = 'none';
-            // Remove "Vote" text node
+            // Remove "Vote" text node (the placeholder text)
             const voteTextSpan = container.querySelector('span[data-post-click-location="vote"]');
             if (voteTextSpan) {
                 for (const node of voteTextSpan.childNodes) {
@@ -30,6 +30,7 @@ function hideVotes(hideVotes, hideDownvotes, hideComments, hideAwards) {
         }
         // Hide award button (if chosen)
         if (hideAwards) {
+            // Handled differently depending if the award button belongs to a post or a comment
             const awardButton = host.shadowRoot.querySelector('award-button');
             const awardButtonComments = document.querySelector('award-button');
             if (awardButton) awardButton.remove();
@@ -40,7 +41,7 @@ function hideVotes(hideVotes, hideDownvotes, hideComments, hideAwards) {
 }
 
 function hideAds() {
-    // Hide promoted posts 
+    // Hide ads / promoted posts
 	const adElements = document.querySelectorAll('shreddit-ad-post, shreddit-comment-tree-ad');
 	adElements.forEach(el => el.remove());
 }

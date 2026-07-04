@@ -8,11 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Load saved settings
     browser.storage.local.get(['hideVotes', 'hideAds', 'hideDownvotes', 'hideComments', 'hideAwards']).then((data) => {
-        hideVotesToggle.checked = data.hideVotes ?? true;      // Default to true if no saved data
+        hideVotesToggle.checked = data.hideVotes ?? true; // Default to true if no saved data
         hideDownvotesToggle.checked = data.hideDownvotes ?? false; // Default to false if no saved data
         hideCommentsToggle.checked = data.hideComments ?? false; // Default to false if no saved data
         hideAwardsToggle.checked = data.hideAwards ?? false; // Default to false if no saved data
-        hideAdsToggle.checked = data.hideAds ?? false;        // Default to false if no saved data
+        hideAdsToggle.checked = data.hideAds ?? false; // Default to false if no saved data
 
     // Show/hide the hideDownvotes container based on the saved state
     hideDownvotesContainer.style.display = hideVotesToggle.checked ? 'block' : 'none';
