@@ -11,3 +11,5 @@ Also has the option to hide the comment count, awards, and ads (all disabled by 
 I made this for myself, and anyone else that wants to browse Reddit for the content, without being subject to the potential hellscape of negativity, ads, and algorithms telling you what to look at.
 <br><br>
 <i>*Positivity Mode™ is not trademarked and I do not know how to register a trademark</i>
+<br><hr>
+<a href="https://www.buymeacoffee.com/bunaventure" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png" alt="Buy Me a Coffee" style="height: 60px !important;width: 217px !important;" ></a>
