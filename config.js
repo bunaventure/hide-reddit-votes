@@ -5,14 +5,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const hideCommentsToggle = document.getElementById('hide-comments');
     const hideAwardsToggle = document.getElementById('hide-awards');
     const hideAdsToggle = document.getElementById('hide-ads');
+    const masterToggle = document.getElementById('master-toggle');
+    const powerText = document.querySelector('.power-button-text');
+    const container = document.querySelector('.container');
+
+    const updatePowerUI = () => {
+        container.classList.toggle('master-disabled', !masterToggle.checked);
+    };
 
     // Load saved settings
-    browser.storage.local.get(['hideVotes', 'hideAds', 'hideDownvotes', 'hideComments', 'hideAwards']).then((data) => {
+    browser.storage.local.get(['hideVotes', 'hideAds', 'hideDownvotes', 'hideComments', 'hideAwards', 'masterToggle']).then((data) => {
         hideVotesToggle.checked = data.hideVotes ?? true; // Default to true if no saved data
         hideDownvotesToggle.checked = data.hideDownvotes ?? false; // Default to false if no saved data
         hideCommentsToggle.checked = data.hideComments ?? false; // Default to false if no saved data
         hideAwardsToggle.checked = data.hideAwards ?? false; // Default to false if no saved data
         hideAdsToggle.checked = data.hideAds ?? false; // Default to false if no saved data
+        masterToggle.checked = data.masterToggle ?? true; // Default to true if no saved data
+        updatePowerUI();
 
     // Show/hide the hideDownvotes container based on the saved state
     hideDownvotesContainer.style.display = hideVotesToggle.checked ? 'block' : 'none';
@@ -25,7 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
         hideDownvotes: hideDownvotesToggle.checked,
         hideComments: hideCommentsToggle.checked,
         hideAwards: hideAwardsToggle.checked,
-        hideAds: hideAdsToggle.checked
+        hideAds: hideAdsToggle.checked,
+        masterToggle: masterToggle.checked
         });
     };
 
@@ -39,4 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
     hideDownvotesToggle.addEventListener('change', saveSettings);
     hideCommentsToggle.addEventListener('change', saveSettings);
     hideAwardsToggle.addEventListener('change', saveSettings);
+    masterToggle.addEventListener('change', () => {
+        saveSettings();
+        updatePowerUI();
+    });
 });
