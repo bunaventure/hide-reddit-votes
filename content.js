@@ -46,6 +46,23 @@ function hideAds() {
 	adElements.forEach(el => el.remove());
 }
 
+
+// TODO: add this as an option
+/*
+function hideEverything() {
+    // Hide ads, and the entire action bar under posts and comments
+    document.querySelectorAll('*').forEach(host => {
+    if (host.shadowRoot) {
+        const postActionBar = host.shadowRoot.querySelector('[class*="shreddit-post-container"]');
+        if (postActionBar) postActionBar.remove();
+
+        const commentActionBar = document.querySelector('shreddit-comment-action-row');
+        if (commentActionBar) commentActionBar.remove();
+
+    }
+}
+*/
+
 browser.storage.local.get({
     hideVotes: true, // Default is on
     hideDownvotes: false, // Default is off
